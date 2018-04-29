@@ -28,8 +28,19 @@ def get_midheaven(time, location):
     inc = math.radians(EARTH_INC)
     A = math.tan(lst)
     B = math.cos(inc)
-    midheaven = math.degrees(math.atan(A/B))
-    return midheaven*u.deg
+    midheaven = math.degrees(math.atan2(A,B))
+
+    ascendant = get_ascendant(time, location).value
+
+    if midheaven < 180:
+        midheaven += 180
+    else:
+        midheaven -= 180
+
+    if ascendant < midheaven:
+        midheaven += 180
+
+    return (midheaven%360)*u.deg
 
 
 def get_cusps(ascendant, midheaven):

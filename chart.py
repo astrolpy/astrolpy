@@ -232,7 +232,7 @@ if __name__ == '__main__':
     print(loc_coord.lat, loc_coord.lon)
     obs = Observer(location=loc_coord)
 
-    tt = Time('2018-04-28 14:00:00')
+    tt = Time('2018-04-28 04:00:00')
     print(tt)
 
     plot_horoscope(tt, loc_coord)
